@@ -1,19 +1,27 @@
 #!/bin/bash
 
-# Prüfen, ob pip installiert ist
-if ! command -v pip &> /dev/null; then
-    echo "pip ist nicht installiert. Bitte installieren Sie pip und versuchen Sie es erneut."
-    exit 1
+# Skript beendet sich bei Fehlern
+set -e
+
+# Argumente prüfen
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <huggingface-username> <huggingface-access-token> <model-name>"
+  exit 1
 fi
 
-# Installieren der Bibliothek vllm
-echo "Installiere die Python-Bibliothek 'vllm'..."
-pip install vllm
+# Argumente zuweisen
+USERNAME=$1
+ACCESS_TOKEN=$2
+MODEL_NAME=$3
 
-# Überprüfen, ob die Installation erfolgreich war
-if pip show vllm &> /dev/null; then
-    echo "Die Installation von 'vllm' war erfolgreich."
-else
-    echo "Die Installation von 'vllm' ist fehlgeschlagen."
-    exit 1
-fi
+# Hugging Face CLI Login
+echo "Logging in to Hugging Face CLI..."
+echo "$ACCESS_TOKEN" | huggingface-cli login --username "$USERNAME" --token
+
+# vLLM und OpenAI Pakete installieren
+echo "Installing vLLM and OpenAI Python packages..."
+pip install vllm openai
+
+# vLLM Modell bereitstellen
+echo "Serving model '$MODEL_NAME' with vLLM..."
+vllm serve "$MODEL_NAME"
