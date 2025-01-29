@@ -15,7 +15,7 @@ ACCESS_TOKEN=$1
 
 # vLLM und OpenAI Pakete installieren
 echo "Installing vLLM and OpenAI Python packages..."
-pip install vllm openai
+pip install vllm openai pandas
 
 # Hugging Face CLI Login
 echo "Logging in to Hugging Face CLI..."
