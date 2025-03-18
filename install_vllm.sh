@@ -16,7 +16,7 @@ ACCESS_TOKEN=$1
 # vLLM und OpenAI Pakete installieren
 echo "Installing vLLM and OpenAI Python packages..."
 pip install vllm openai pandas langchain
-# pip install git+https://github.com/vllm-project/vllm@v0.8.0rc2
+pip install git+https://github.com/vllm-project/vllm@v0.8.0rc2
 
 # Hugging Face CLI Login
 echo "Logging in to Hugging Face CLI..."
