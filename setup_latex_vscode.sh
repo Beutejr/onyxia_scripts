@@ -13,9 +13,9 @@ code-server --install-extension streetsidesoftware.code-spell-checker-german
 
 # update tex-live
 URL="https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh"
-SCRIPT_NAME="update-tlmgr-latest.sh"
-curl -L -o "$SCRIPT_NAME" "$URL"
-sh "$SCRIPT_NAME" -- --upgrade
+# SCRIPT_NAME="update-tlmgr-latest.sh"
+wget -qO- URL | sh
+# sh "$SCRIPT_NAME" -- --upgrade
 # latex packages
 tlmgr install epigraph emptypage bibtopic nextpage babel-german hyphen-german
 
