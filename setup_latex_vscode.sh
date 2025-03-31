@@ -18,7 +18,7 @@ wget -qO- URL | sh
 tlmgr update --self --all
 # sh "$SCRIPT_NAME" -- --upgrade
 # latex packages
-tlmgr install epigraph emptypage bibtopic nextpage babel-german hyphen-german
+tlmgr install epigraph emptypage bibtopic nextpage babel-german hyphen-german pgfplots
 
 echo "All installations completed successfully."
 
